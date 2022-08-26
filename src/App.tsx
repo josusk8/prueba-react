@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import Login from "./login/login";
 
 const Root = () => <h1>Root</h1>;
-const Login = () => <h1>login</h1>;
+
 const Website = () => <h1>Website</h1>;
 const Faqs = () => <h1>FAQS</h1>;
 
