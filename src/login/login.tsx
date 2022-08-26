@@ -1,34 +1,38 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import "./login.css";
-import { updateShorthandPropertyAssignment } from "typescript";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const { Item } = Form;
 const { Password } = Input;
 
+
 function Login() {
+  const [toWebSite, setToWebSite] = React.useState(false)
 
-    const auth = (datos:any) =>{
+  
+  if (toWebSite === true){
+    return <Navigate to = "/website"></Navigate>
+  }
 
-        if(datos.username === "admin" && datos.password === "admin"){
-            console.log("GENIAL")
-        }else{
-            console.log("NAIN")
-        }
-        
-        
+
+  const auth = (datos: any) => {
+    if (datos.username === "admin" && datos.password === "admin") {
+      setToWebSite(true)
+    } else {
+      setToWebSite(false)
     }
-
-
-
+  };
 
   return (
     <div className="primaryForm">
       <div className="secundaryForm"></div>
-      <Form name="form" initialValues={{
-        remind: true
-      }}
-      onFinish={auth}
+      <Form
+        name="form"
+        initialValues={{
+          remind: true,
+        }}
+        onFinish={auth}
       >
         <Item
           label="User"

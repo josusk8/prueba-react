@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import Login from "./login/login";
 
 const Root = () => <h1>Root</h1>;
-
 const Website = () => <h1>Website</h1>;
 const Faqs = () => <h1>FAQS</h1>;
 
@@ -12,6 +11,15 @@ const Faqs = () => <h1>FAQS</h1>;
 function App() {
   return (
     <div className="App">
+      <header>
+        <h1 className="tittle">Continentes y países</h1>
+      <nav>
+        <ul>
+          <li> <Link to="/login">Login</Link></li>
+          <li> <Link to="/faqs">FAQS</Link></li>
+        </ul>
+      </nav>
+      </header>
       <Routes>
         <Route path="/" element={<Root />}></Route>
         <Route path="/login" element={<Login />}></Route>
