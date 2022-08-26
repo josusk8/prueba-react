@@ -1,30 +1,49 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, Space } from "antd";
+import { PoweroffOutlined } from "@ant-design/icons";
 import "./login.css";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const { Item } = Form;
 const { Password } = Input;
 
+const Login: React.FC = () => {
+  const [loadings, setLoadings] = useState<boolean[]>([]);
 
-function Login() {
-  const [toWebSite, setToWebSite] = React.useState(false)
+  const enterLoading = (index: number) => {
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      newLoadings[index] = true;
+      return newLoadings;
+    });
 
-  
-  if (toWebSite === true){
-    return <Navigate to = "/website"></Navigate>
+    setTimeout(() => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        newLoadings[index] = false;
+        return newLoadings;
+      });
+    }, 6000);
+  };
+
+  const [toWebSite, setToWebSite] = React.useState(false);
+
+  if (toWebSite === true) {
+    return <Navigate to="/website"></Navigate>;
   }
-
 
   const auth = (datos: any) => {
     if (datos.username === "admin" && datos.password === "admin") {
-      setToWebSite(true)
+      setToWebSite(true);
     } else {
-      setToWebSite(false)
+      setToWebSite(false);
     }
   };
 
   return (
+    <div>
+       <Button type="primary">Primary Button</Button>
+    
     <div className="primaryForm">
       <div className="secundaryForm"></div>
       <Form
@@ -64,14 +83,18 @@ function Login() {
           <Checkbox>Recordar usuario</Checkbox>
         </Item>
 
-        <Item>
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-        </Item>
+        <Button
+          htmlType="submit"
+          type="primary"
+          loading={loadings[0]}
+          onClick={() => enterLoading(0)}
+        >
+          Login
+        </Button>
       </Form>
     </div>
+    </div>
   );
-}
+};
 
 export default Login;
