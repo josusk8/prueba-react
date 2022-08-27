@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, Space } from "antd";
 import { PoweroffOutlined } from "@ant-design/icons";
-import "./login.css";
+import "./login-style.css";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const { Item } = Form;
 const { Password } = Input;
 
-const Login: React.FC = () => {
+const Login = () => {
   const [loadings, setLoadings] = useState<boolean[]>([]);
 
   const enterLoading = (index: number) => {
@@ -29,7 +29,7 @@ const Login: React.FC = () => {
   const [toWebSite, setToWebSite] = React.useState(false);
 
   if (toWebSite === true) {
-    return <Navigate to="/website"></Navigate>;
+    return <Navigate to="/continents"></Navigate>;
   }
 
   const auth = (datos: any) => {
@@ -41,9 +41,8 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
-       <Button type="primary">Primary Button</Button>
-    
+   
+     
     <div className="primaryForm">
       <div className="secundaryForm"></div>
       <Form
@@ -93,7 +92,7 @@ const Login: React.FC = () => {
         </Button>
       </Form>
     </div>
-    </div>
+   
   );
 };
 
