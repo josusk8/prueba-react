@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox, Space } from "antd";
+import { Form, Input, Button, Checkbox, Space, Alert } from "antd";
 import { PoweroffOutlined } from "@ant-design/icons";
 import "./login-style.css";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -26,23 +26,24 @@ const Login = () => {
     }, 6000);
   };
 
-  const [toWebSite, setToWebSite] = React.useState(false);
+  const [goToWebSite, setGoToWebSite] = React.useState(false);
 
-  if (toWebSite === true) {
+  if (goToWebSite === true) {
     return <Navigate to="/continents"></Navigate>;
-  }
-
+  } 
+   
   const auth = (datos: any) => {
     if (datos.username === "admin" && datos.password === "admin") {
-      setToWebSite(true);
+      setGoToWebSite(true);
     } else {
-      setToWebSite(false);
+      return (
+        <div></div>
+      )
+      setGoToWebSite(false);
     }
   };
 
   return (
-   
-     
     <div className="primaryForm">
       <div className="secundaryForm"></div>
       <Form
@@ -92,7 +93,6 @@ const Login = () => {
         </Button>
       </Form>
     </div>
-   
   );
 };
 

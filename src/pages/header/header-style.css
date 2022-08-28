@@ -1,0 +1,15 @@
+@import '~antd/dist/antd.css';
+
+ul li{
+  display: inline;
+}
+.ant-menu-vertical.ant-menu-sub > .ant-menu-item {
+  display: inline;
+}
+
+.ant-menu-submenu-popup {
+  top: 0px !important;
+  right: 5% !important;
+  left: auto !important;
+  width: 400px;
+}
