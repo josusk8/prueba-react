@@ -36,9 +36,6 @@ const Login = () => {
     if (datos.username === "admin" && datos.password === "admin") {
       setGoToWebSite(true);
     } else {
-      return (
-        <div></div>
-      )
       setGoToWebSite(false);
     }
   };

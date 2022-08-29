@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Login from "../login";
 
 const Root = () => {
- 
+
   return (
     <div>
       <Link to='/login'>Loggin</Link>

@@ -3,7 +3,7 @@ import { Content, Footer, Header } from "antd/lib/layout/layout";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Continents from "./pages/continents";
+import ContinentsPage from "./pages/continents";
 import Faqs from "./pages/faqs";
 import Login from "./pages/login";
 import Root from "./pages/root";
@@ -14,7 +14,7 @@ function App() {
       <Route path="/" element={<Root />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/faqs" element={<Faqs />}></Route>
-      <Route path="/continents" element={<Continents />}></Route>
+      <Route path="/continents" element={<ContinentsPage />}></Route>
     </Routes>
   );
 }
