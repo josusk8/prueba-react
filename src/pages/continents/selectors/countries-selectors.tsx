@@ -2,11 +2,15 @@ import { gql, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { Select } from "antd";
 
+
 interface IMyProps {
   id: string;
+  mode: string; 
 }
 
 const CountriesSelector: React.FC<IMyProps> = (props: IMyProps) => {
+
+
   const FIND_COUNTRY = gql(
     'query{ countries(  filter: { continent: { eq: "' +
       props.id +
@@ -17,7 +21,13 @@ const CountriesSelector: React.FC<IMyProps> = (props: IMyProps) => {
     'query{ countries {name code }}'
   );
 
-  const { data, error, loading } = useQuery(ALL_COUNTRY);
+  let query = ALL_COUNTRY;
+
+  if(props.mode == "one"){
+    query = FIND_COUNTRY
+  }
+
+  const { data, error, loading } = useQuery(query);
 
   const { Option } = Select;
   const handleChange = (value: string) => {
