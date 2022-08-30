@@ -8,16 +8,17 @@ const items: MenuProps["items"] = [
 
   {
     label: (
-      <Link to="/login" target="_blank" rel="noopener noreferrer">
+      <Link to="/login" target="_parent" rel="noopener noreferrer">
         Close sesion
       </Link>
     ),
     key: "login",
-    icon: <CloseCircleOutlined />,
+    icon: <CloseCircleOutlined 
+/>,
   },
   {
     label: (
-      <Link to="/faqs" target="_blank" rel="noopener noreferrer">
+      <Link to="/faqs" target="_parent" rel="noopener noreferrer">
         FAQS
       </Link>
     ),

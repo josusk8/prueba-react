@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { Select } from "antd";
+import InfoCard from "../cards/info-cards";
 
 
 interface IMyProps {
@@ -14,7 +15,7 @@ const CountriesSelector: React.FC<IMyProps> = (props: IMyProps) => {
   const FIND_COUNTRY = gql(
     'query{ countries(  filter: { continent: { eq: "' +
       props.id +
-      '" }}){name code }}'
+      '" }}){name code capital emoji }}'
   );
 
   const ALL_COUNTRY = gql(
@@ -61,6 +62,11 @@ const CountriesSelector: React.FC<IMyProps> = (props: IMyProps) => {
           );
         })}
       </Select>
+      {data.countries.map((c: any) => {
+          return (
+            <InfoCard name={c.name} code={c.code} capital={c.capital}/> 
+          );
+        })}
       
     </div>
   );

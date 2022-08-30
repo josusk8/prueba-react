@@ -29,7 +29,7 @@ const Login = () => {
   const [goToWebSite, setGoToWebSite] = React.useState(false);
 
   if (goToWebSite === true) {
-    return <Navigate to="/continents"></Navigate>;
+    return <Navigate to="/website"></Navigate>;
   } 
    
   const auth = (datos: any) => {

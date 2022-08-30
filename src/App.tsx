@@ -7,6 +7,7 @@ import WebsiteMain from "./pages/website";
 import Faqs from "./pages/faqs";
 import Login from "./pages/login";
 import Root from "./pages/root";
+import Geography from "./pages/geography";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <Route path="/" element={<Root />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/faqs" element={<Faqs />}></Route>
-      <Route path="/continents" element={<WebsiteMain />}></Route>
+      <Route path="/website" element={<Geography />}></Route>
     </Routes>
   );
 }
