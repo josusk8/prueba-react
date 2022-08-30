@@ -13,7 +13,6 @@ interface DataType {
 
 }
 
-
 interface Description {
     code: string
     capital: string
@@ -54,7 +53,7 @@ const TableCountries: React.FC<IMyProps> = (props: IMyProps) => {
         {
             title: 'Country',
             dataIndex: 'name',
-            render: text => <a>{text}</a>,
+            render: text => <a target= "_blank" href={`https://wikipedia.org/wiki/${text}` } >{text}</a>,
         },
 
     ];
@@ -73,8 +72,6 @@ const TableCountries: React.FC<IMyProps> = (props: IMyProps) => {
                     description: { code: c.code, capital: c.capital },
                     capital: c.capital,
                     languages:c.languages
-                        
-
                 },
             )
         })
