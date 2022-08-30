@@ -1,8 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { Select } from "antd";
-import CountriesSelector from "./countries-selectors";
-import MyHeader from "../../header";
+import CountriesSelector from "./countries-selector";
+
 
 const ALL_CONTINENTS = gql("query{ continents{ name code}}");
 
