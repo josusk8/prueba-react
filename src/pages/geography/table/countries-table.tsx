@@ -9,7 +9,7 @@ interface DataType {
     name: string;
     description: Description;
     capital: string
-    lenguages: Lenguages[]
+    languages: Languages[]
 
 }
 
@@ -22,7 +22,7 @@ interface Description {
 interface IMyProps {
     code: string
 }
-interface Lenguages {
+interface Languages {
     name: string
     code: string
     native: string
@@ -35,11 +35,11 @@ const TableCountries: React.FC<IMyProps> = (props: IMyProps) => {
     const FIND_COUNTRY = gql(
         'query{ countries(  filter: { continent: { eq: "' +
         props.code +
-        '" }}){name code capital emoji }}'
+        '" }}){name code capital  languages{ code name  native} }}'
     );
 
     const ALL_COUNTRY = gql(
-        'query{ countries {name code capital emoji}}'
+        'query{ countries {name code capital  languages{ code name  native} }}'
     );
 
     let query = ALL_COUNTRY;
@@ -62,6 +62,8 @@ const TableCountries: React.FC<IMyProps> = (props: IMyProps) => {
 
     if (loading) {
     } else {
+
+        console.log(data)
         data.countries.map((c: any) => {
 
             dataDTO.push(
@@ -70,11 +72,8 @@ const TableCountries: React.FC<IMyProps> = (props: IMyProps) => {
                     name: c.name,
                     description: { code: c.code, capital: c.capital },
                     capital: c.capital,
-                    lenguages: [
-                        { name: "españolo", code: "es", native: "yes" },
+                    languages:c.languages
                         
-
-                    ]
 
                 },
             )
@@ -89,20 +88,20 @@ const TableCountries: React.FC<IMyProps> = (props: IMyProps) => {
                 expandedRowRender: record =>
                     <><p style={{ margin: 0 }}><b>Code:</b> {record.description.code}</p>
                         <p style={{ margin: 0 }}><b>Capital:</b> {record.description.capital}</p>
-                        <p style={{ margin: 0 }}><b>Lenguages:</b> {
+                        <p style={{ margin: 0 }}><b>Languages:</b> {
 
-                            record.lenguages.map((c: any, index) => {
-                                let lenguageList = ""
+                            record.languages.map((c: any, index) => {
+                                let languageList = ""
                                 if (index < 1) {
-                                    lenguageList += c.name
+                                    languageList += c.name
                                     index++
                                 } else {
-                                    lenguageList += ", " + c.name
+                                    languageList += ", " + c.name
                                     index++
                                 }
 
 
-                                return (lenguageList)
+                                return (languageList)
                             })
                         }</p></>,
 
