@@ -7,18 +7,25 @@ import React from 'react';
 interface DataType {
     key: React.Key;
     name: string;
-    description: string;
+    description: Description;
     capital: string
-    lenguages: [Lenguage]
+    lenguages: Lenguages[]
+
 }
 
-interface Lenguage {
-    name: string
-    native: boolean
+
+interface Description {
+    code: string
+    capital: string
 }
 
 interface IMyProps {
     code: string
+}
+interface Lenguages {
+    name: string
+    code: string
+    native: string
 }
 
 
@@ -32,7 +39,7 @@ const TableCountries: React.FC<IMyProps> = (props: IMyProps) => {
     );
 
     const ALL_COUNTRY = gql(
-        'query{ countries {name code }}'
+        'query{ countries {name code capital emoji}}'
     );
 
     let query = ALL_COUNTRY;
@@ -56,32 +63,48 @@ const TableCountries: React.FC<IMyProps> = (props: IMyProps) => {
     if (loading) {
     } else {
         data.countries.map((c: any) => {
+
             dataDTO.push(
                 {
                     key: c.code,
                     name: c.name,
-                    description: "la bandera es ",
+                    description: { code: c.code, capital: c.capital },
                     capital: c.capital,
-                    lenguages: [{
-                        name: "hajshajs",
-                        native: true
-                    }]
+                    lenguages: [
+                        { name: "españolo", code: "es", native: "yes" },
+                        
+
+                    ]
+
                 },
             )
         })
     }
 
 
-
-
-
-
-
     return (
         <Table
             columns={columns}
             expandable={{
-                expandedRowRender: record => <p style={{ margin: 0 }}>{record.description}</p>,
+                expandedRowRender: record =>
+                    <><p style={{ margin: 0 }}><b>Code:</b> {record.description.code}</p>
+                        <p style={{ margin: 0 }}><b>Capital:</b> {record.description.capital}</p>
+                        <p style={{ margin: 0 }}><b>Lenguages:</b> {
+
+                            record.lenguages.map((c: any, index) => {
+                                let lenguageList = ""
+                                if (index < 1) {
+                                    lenguageList += c.name
+                                    index++
+                                } else {
+                                    lenguageList += ", " + c.name
+                                    index++
+                                }
+
+
+                                return (lenguageList)
+                            })
+                        }</p></>,
 
             }}
             dataSource={dataDTO}

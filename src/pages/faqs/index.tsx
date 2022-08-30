@@ -9,7 +9,7 @@ const Faqs = () => {
         <li>First steps</li>
         <li>Second steps</li>
       </ul>
-      <Link to = "/continents"> Go back</Link>
+      <Link to = "/website"> Go back</Link>
      </div>
 
   );
