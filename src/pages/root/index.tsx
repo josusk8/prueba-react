@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Login from "../login";
+import "./root-style.css"
 
 const Root = () => {
 
   return (
-    <div>
+    <div className="init" >
+      <div >
       <Link to='/login'>Loggin</Link>
+      </div>
     </div>
   );
 

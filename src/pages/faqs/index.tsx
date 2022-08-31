@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./faqs-style.css"
 
 const Faqs = () => {
   return (
-    <div>
+    <div className="faqs">
       <h1>FAQS</h1>;
       <ul>
         <li>First steps</li>
