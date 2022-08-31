@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, Space, Alert } from "antd";
-import { PoweroffOutlined } from "@ant-design/icons";
 import "./login-style.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, Route, useNavigate } from "react-router-dom";
+import Geography from "../geography";
+
 
 const { Item } = Form;
 const { Password } = Input;
@@ -29,9 +30,13 @@ const Login = () => {
   const [goToWebSite, setGoToWebSite] = React.useState(false);
 
   if (goToWebSite === true) {
-    return <Navigate to="/website"></Navigate>;
-  } 
-   
+    return (
+      <div>
+       <Geography></Geography>
+      </div>
+    );
+  }
+
   const auth = (datos: any) => {
     if (datos.username === "admin" && datos.password === "admin") {
       setGoToWebSite(true);
