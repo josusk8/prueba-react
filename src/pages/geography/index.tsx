@@ -1,17 +1,18 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
+import { tokenToString } from "typescript";
 import MyHeader from "../header";
-import ContinentsSelector from "./selector/continents-selector";
-import TableCountries from "./table/countries-table";
+import ContinentsSelector from "./components/selector/continents-selector";
 
-const Geography: React.FC =() =>{
 
-return (
-    <div>
-    <MyHeader/>
-    <ContinentsSelector/>
-    
-    </div>
-)
+const Geography = () => {
+   
+    return (
+        <div>
+            <MyHeader/>
+            <ContinentsSelector />
+        </div>
+    )
 }
 
 export default Geography

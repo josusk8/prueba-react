@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form, Input, Button, Checkbox, Space, Alert } from "antd";
 import "./login-style.css";
-import { Navigate, Route, useNavigate } from "react-router-dom";
 import Geography from "../geography";
-
+import { Navigate, Route } from "react-router-dom";
+import UserContext, { ITUserContext } from "../../utils/provider";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -30,9 +30,12 @@ const Login = () => {
   const [goToWebSite, setGoToWebSite] = React.useState(false);
 
   if (goToWebSite === true) {
+    const value = React.useContext(UserContext)
+    value.isAuth = true
+    
     return (
       <div>
-       <Geography></Geography>
+        <Navigate to="/geography"></Navigate>
       </div>
     );
   }
@@ -46,54 +49,56 @@ const Login = () => {
   };
 
   return (
-    <div className="primaryForm">
-      <div className="secundaryForm"></div>
-      <Form
-        name="form"
-        initialValues={{
-          remind: true,
-        }}
-        onFinish={auth}
-      >
-        <Item
-          label="User"
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: "Ingrese su nombre de usuario",
-            },
-          ]}
+    <div>
+      <div className="primaryForm">
+        <div className="secundaryForm"></div>
+        <Form
+          name="form"
+          initialValues={{
+            remind: true,
+          }}
+          onFinish={auth}
         >
-          <Input />
-        </Item>
+          <Item
+            label="User"
+            name="username"
+            rules={[
+              {
+                required: true,
+                message: "Ingrese su nombre de usuario",
+              },
+            ]}
+          >
+            <Input />
+          </Item>
 
-        <Item
-          label="Password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Ingrese su contraseña",
-            },
-          ]}
-        >
-          <Password />
-        </Item>
+          <Item
+            label="Password"
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Ingrese su contraseña",
+              },
+            ]}
+          >
+            <Password />
+          </Item>
 
-        <Item name="remind" valuePropName="checked">
-          <Checkbox>Recordar usuario</Checkbox>
-        </Item>
+          <Item name="remind" valuePropName="checked">
+            <Checkbox>Recordar usuario</Checkbox>
+          </Item>
 
-        <Button
-          htmlType="submit"
-          type="primary"
-          loading={loadings[0]}
-          onClick={() => enterLoading(0)}
-        >
-          Login
-        </Button>
-      </Form>
+          <Button
+            htmlType="submit"
+            type="primary"
+            loading={loadings[0]}
+            onClick={() => enterLoading(0)}
+          >
+            Login
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 };
