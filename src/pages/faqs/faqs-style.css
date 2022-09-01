@@ -1,13 +1,20 @@
-.faqs{
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: white;
-    height: 100%;
-    height: 100vh; 
-    width: 100vw; 
- }
- h1 {
-text-align: center;
- }
+
+.container {
+  position: absolute;
+  left: 30%;
+  right: 30%;
+
+  
+}
+.countryFind{
+    font-size: 5rem;
+    background-color: rgba(245, 245, 220, 0.098); 
+}
+
+.link{
+    text-align: center;
+}
+
+h2{
+    
+}

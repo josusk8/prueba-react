@@ -65,7 +65,6 @@ const TableCountries: React.FC<IMyProps> = (props: IMyProps) => {
     //Parse data input to dataDTO
     const dataDTO: DataType[] = []
     if (!loading) {
-        console.log(data)
         data.countries.map((c: any) => {
             dataDTO.push(
                 {

@@ -32,11 +32,6 @@ const ContinentsSelector = () => {
     );
   }
 
-  //Show Data
-  if (!error && !loading) {
-    console.log(data);
-  }
-
   return loading ? (
     <Spin className="spin"></Spin>
   ) : (
