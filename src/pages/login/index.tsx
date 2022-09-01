@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Form, Input, Button, Checkbox, Space, Alert } from "antd";
 import "./login-style.css";
-import Geography from "../geography";
 import { Navigate, Route } from "react-router-dom";
 import UserContext, { ITUserContext } from "../../utils/provider";
 
@@ -32,7 +31,7 @@ const Login = () => {
   if (goToWebSite === true) {
     const value = React.useContext(UserContext)
     value.isAuth = true
-    
+
     return (
       <div>
         <Navigate to="/geography"></Navigate>
@@ -49,7 +48,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="loginPage">
       <div className="primaryForm">
         <div className="secundaryForm"></div>
         <Form

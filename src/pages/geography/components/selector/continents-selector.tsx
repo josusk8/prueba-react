@@ -2,11 +2,16 @@ import { gql, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { Select } from "antd";
 import TableCountries from "../table/countries-table";
+import "../../geography-style.css"
 
 const ALL_CONTINENTS = gql("query{ continents{ name code}}");
 
 const ContinentsSelector = () => {
   const { data, error, loading } = useQuery(ALL_CONTINENTS);
+  if (!error && !loading) {
+    console.log(data)
+  }
+
   const [continent, setContinent] = useState("All");
   const { Option } = Select;
 
@@ -31,11 +36,10 @@ const ContinentsSelector = () => {
   return loading ? (
     <p>Loading</p>
   ) : (
-    <div>
+    <div >
       <Select
         className="continentsList"
         defaultValue={continent}
-        style={{ width: 120 }}
         onChange={handleChange}
       >
         <Option key="00" value="All">

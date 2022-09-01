@@ -5,7 +5,6 @@ export interface ITUserContext {
     isAuth: boolean;
    
   }
-  
   const defaultState = {
     isAuth: false,
   };

@@ -1,4 +1,5 @@
-.faqs{
+
+.geography{
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -7,7 +8,20 @@
     height: 100%;
     height: 100vh; 
     width: 100vw; 
- }
- h1 {
-text-align: center;
- }
+}
+
+.tableCountries{
+padding-top: 2%;
+padding-left: 15%;
+padding-right: 15%;
+}
+
+.continentsList{
+    margin-top: 4%;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+
+    }
+
+   

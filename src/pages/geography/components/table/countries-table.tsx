@@ -1,8 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
 import { Row, Space, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { addListener } from 'process';
 import React from 'react';
+import "../../geography-style.css"
 
 interface DataType {
     key: React.Key;
@@ -79,7 +79,7 @@ const TableCountries: React.FC<IMyProps> = (props: IMyProps) => {
 
 
     return (
-        <Table
+        <Table className='tableCountries'
             columns={columns}
             expandable={{
                 expandedRowRender: record =>
