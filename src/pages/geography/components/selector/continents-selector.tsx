@@ -1,42 +1,46 @@
 import { gql, useQuery } from "@apollo/client";
 import React, { useState } from "react";
-import { Select } from "antd";
+import { Alert, Result, Select, Spin } from "antd";
 import TableCountries from "../table/countries-table";
-import "../../geography-style.css"
+import "../../geography-style.css";
+const { Option } = Select;
 
+//Query GraphQL
 const ALL_CONTINENTS = gql("query{ continents{ name code}}");
 
 const ContinentsSelector = () => {
-  const { data, error, loading } = useQuery(ALL_CONTINENTS);
-  if (!error && !loading) {
-    console.log(data)
-  }
-
+  //Set Continent
   const [continent, setContinent] = useState("All");
-  const { Option } = Select;
-
   let mode = "All";
+  const handleChange = (value: string) => {
+    setContinent(value);
+  };
+
+  //Send query and adapt to entry mode, ALL or ONE
+  const { data, error, loading } = useQuery(ALL_CONTINENTS);
   if (continent != "All") {
     mode = "one";
   }
 
-  const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-    setContinent(value);
-  };
-
+  //Control error data entry
   if (error) {
     return (
-      <div>
-        <span>error</span>
-      </div>
+      <Result
+        status="warning"
+        title="There are some problems with your operation."
+      />
     );
   }
 
+  //Show Data
+  if (!error && !loading) {
+    console.log(data);
+  }
+
   return loading ? (
-    <p>Loading</p>
+    <Spin className="spin"></Spin>
   ) : (
-    <div >
+    <div>
       <Select
         className="continentsList"
         defaultValue={continent}

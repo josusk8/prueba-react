@@ -1,6 +1,6 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
-ul li{
+ul li {
   display: inline;
 }
 .ant-menu-vertical.ant-menu-sub > .ant-menu-item {

@@ -1,22 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, Space, Alert } from "antd";
 import "./login-style.css";
-import { Navigate, Route } from "react-router-dom";
-import UserContext, { ITUserContext } from "../../utils/provider";
-
+import { Navigate } from "react-router-dom";
+import UserContext from "../../utils/provider";
 const { Item } = Form;
 const { Password } = Input;
 
 const Login = () => {
+  //Button functions
   const [loadings, setLoadings] = useState<boolean[]>([]);
-
   const enterLoading = (index: number) => {
     setLoadings((prevLoadings) => {
       const newLoadings = [...prevLoadings];
       newLoadings[index] = true;
       return newLoadings;
     });
-
     setTimeout(() => {
       setLoadings((prevLoadings) => {
         const newLoadings = [...prevLoadings];
@@ -26,12 +24,11 @@ const Login = () => {
     }, 6000);
   };
 
+  //Redirect to geography page
   const [goToWebSite, setGoToWebSite] = React.useState(false);
-
   if (goToWebSite === true) {
-    const value = React.useContext(UserContext)
-    value.isAuth = true
-
+    const value = React.useContext(UserContext);
+    value.isAuth = true;
     return (
       <div>
         <Navigate to="/geography"></Navigate>
@@ -39,11 +36,13 @@ const Login = () => {
     );
   }
 
+  //Check username and password
   const auth = (datos: any) => {
     if (datos.username === "admin" && datos.password === "admin") {
       setGoToWebSite(true);
     } else {
       setGoToWebSite(false);
+    
     }
   };
 

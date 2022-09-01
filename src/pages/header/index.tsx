@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, MenuProps } from "antd";
 import "./header-style.css";
-import { MessageOutlined, CloseCircleOutlined  } from "@ant-design/icons";
+import { MessageOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 const items: MenuProps["items"] = [
-
   {
     label: (
       <Link to="/login" target="_parent" rel="noopener noreferrer">
@@ -13,8 +12,7 @@ const items: MenuProps["items"] = [
       </Link>
     ),
     key: "login",
-    icon: <CloseCircleOutlined 
-/>,
+    icon: <CloseCircleOutlined />,
   },
   {
     label: (
@@ -25,7 +23,6 @@ const items: MenuProps["items"] = [
     key: "faqs",
     icon: <MessageOutlined />,
   },
-  
 ];
 
 const MyHeader: React.FC = () => {
@@ -38,12 +35,12 @@ const MyHeader: React.FC = () => {
 
   return (
     <Menu
+      className="menu"
       onClick={onClick}
       selectedKeys={[current]}
       mode="horizontal"
       items={items}
       theme={"light"}
-     
     />
   );
 };
