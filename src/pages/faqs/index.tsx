@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import MyHeader from "../header";
 import "./faqs-style.css";
 
 const Faqs = () => {

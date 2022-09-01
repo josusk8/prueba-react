@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox, Space, Alert } from "antd";
+import { Form, Input, Button, Checkbox, Space, Alert, message } from "antd";
 import "./login-style.css";
 import { Navigate } from "react-router-dom";
 import UserContext from "../../utils/provider";
@@ -21,7 +21,7 @@ const Login = () => {
         newLoadings[index] = false;
         return newLoadings;
       });
-    }, 6000);
+    }, 3000);
   };
 
   //Redirect to geography page
@@ -40,10 +40,19 @@ const Login = () => {
   const auth = (datos: any) => {
     if (datos.username === "admin" && datos.password === "admin") {
       setGoToWebSite(true);
+      success()
     } else {
       setGoToWebSite(false);
-    
+      error()
     }
+  };
+  //Messgaes validations
+  const error = () => {
+    message.error('The user or password has not correct',3 );
+  };
+
+  const success = () => {
+    message.success('Loggin complete');
   };
 
   return (
