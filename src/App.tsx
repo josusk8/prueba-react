@@ -13,9 +13,6 @@ import PrivateRoutes from "./utils/private-routes";
 import UserContext from "./utils/provider";
 
 
-
-
-
 function App() {
 
   const usuario = useContext(UserContext)

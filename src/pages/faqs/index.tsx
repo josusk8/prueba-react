@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MyHeader from "../header";
+
 import "./faqs-style.css";
 
 const Faqs = () => {
   return (
-    <div className="container">
+    <div>
+      <MyHeader></MyHeader>
+      <div className="container">
       <div >
         <p className="countryFind">Country find</p>
         <div className="firstSteps">
@@ -60,6 +63,8 @@ const Faqs = () => {
         </Link>
       </div>
     </div>
+    </div>
+    
   );
 };
 

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, MenuProps } from "antd";
 import "./header-style.css";
-import { MessageOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { MessageOutlined, CloseCircleOutlined, AimOutlined } from "@ant-design/icons";
+
 
 const items: MenuProps["items"] = [
   {
@@ -13,6 +14,15 @@ const items: MenuProps["items"] = [
     ),
     key: "login",
     icon: <CloseCircleOutlined />,
+  },
+  {
+    label: (
+      <Link to="/geography" target="_parent" rel="noopener noreferrer">
+        Geography
+      </Link>
+    ),
+    key: "geography",
+    icon: <AimOutlined />,
   },
   {
     label: (
@@ -34,7 +44,8 @@ const MyHeader: React.FC = () => {
   };
 
   return (
-    <Menu
+    
+      <Menu
       className="menu"
       onClick={onClick}
       selectedKeys={[current]}
@@ -42,6 +53,7 @@ const MyHeader: React.FC = () => {
       items={items}
       theme={"light"}
     />
+    
   );
 };
 
